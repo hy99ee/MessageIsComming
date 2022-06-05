@@ -9,7 +9,9 @@ protocol ClosableViewModelType {
 }
 
 protocol MessageViewModelType: ClosableViewModelType {
+    var onUpdateText: Driver<String>! { get }
     var dynamicText: Driver<String>? { get }
+    var dynamicTextDelay: Int? { get }
     var inset: UIEdgeInsets { get }
     var offset: UIEdgeInsets { get }
     var animation: MessageAnimation { get }
@@ -20,12 +22,11 @@ protocol MessageViewModelType: ClosableViewModelType {
     var color: UIColor { get }
     var tintColor: UIColor { get }
     var font: UIFont { get }
-
-    var onUpdateText: Driver<String>! { get }
 }
 
 class MessageViewModel: MessageViewModelType {
     private(set) var dynamicText: Driver<String>?
+    private(set) var dynamicTextDelay: Int?
     private(set) var inset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
     private(set) var offset = UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 40)
     private(set) var animation: MessageAnimation = .slide
@@ -51,6 +52,7 @@ class MessageViewModel: MessageViewModelType {
         data.options.forEach {
             switch $0 {
             case let .dynamicText(dynamicText): self.dynamicText = dynamicText
+            case let .dynamicTextDelay(dynamicTextDelay): self.dynamicTextDelay = dynamicTextDelay
             case let .inset(inset): self.inset = inset
             case let .offset(offset): self.offset = offset
             case let .animation(animation): self.animation = animation

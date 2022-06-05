@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        MessageCoordinator.show(parent: view, data: MessageData(text: "Small",
+        MessageCoordinator.show(parent: view, data: MessageData(text: ["Small", "Smallar", "NExt"],
                                                                 options: [.autoHideDelay(2)]))
         MessageCoordinator.show(parent: view, data: MessageData(text: "Middle",
                                                                 options: [
@@ -42,8 +42,54 @@ class ViewController: UIViewController {
                                                                     .font(UIFont.systemFont(ofSize: 60, weight: .bold))
                                                                 ]))
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            MessageCoordinator.show(parent: self.view, data: MessageData(text: ["Bottom1", "Bottom2","Bottom3","Bottom4","Bottom5","Bottom6","Bottom7","Bottom8"] ,
+                                                                options: [
+                                                                    .color(.red),
+                                                                    .inset(UIEdgeInsets(
+                                                                        top: self.view.frame.height / 2,
+                                                                            left: 10,
+                                                                            bottom: 50,
+                                                                            right: 10
+                                                                        )),
+                                                                    
+                                                                    .offset(UIEdgeInsets(
+                                                                        top: 70,
+                                                                        left: 170,
+                                                                        bottom: 25,
+                                                                        right: 30
+                                                                    )),
+                                                                    .tintColor(.black),
+                                                                    .autoHide(false),
+                                                                    .autoHideDelay(8),
+                                                                    .font(UIFont.systemFont(ofSize: 40, weight: .heavy))
+                                                                    
+                                                                ]))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                MessageCoordinator.show(parent: self.view, data: MessageData(text: "Center",
+                                                                    options: [
+                                                                        .color(.blue),
+                                                                        .inset(UIEdgeInsets(
+                                                                            top: self.view.frame.height / 2 - 100,
+                                                                                left: 50,
+                                                                                bottom: 50,
+                                                                                right: 50
+                                                                            )),
+                                                                        .autoHide(true),
+                                                                        .tintColor(.orange),
+                                                                        .autoHideDelay(10),
+                                                                        .offset(UIEdgeInsets(
+                                                                            top: 10,
+                                                                            left: 20,
+                                                                            bottom: 60,
+                                                                            right: 30
+                                                                        )),
+                                                                        .font(UIFont.systemFont(ofSize: 45, weight: .light))
+                                                                    ]))
+            }
+        }
     }
-
-
 }
 
