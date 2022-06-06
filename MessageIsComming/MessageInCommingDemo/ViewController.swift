@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             MessageCoordinator.show(parent: self.view, data: MessageData(text: ["Bottom1", "Bottom2","Bottom3","Bottom4","Bottom5","Bottom6","Bottom7","Bottom8"] ,
                                                                 options: [
+                                                                    .dynamicTextDelay(1000),
                                                                     .color(.red),
                                                                     .inset(UIEdgeInsets(
                                                                         top: self.view.frame.height / 2,

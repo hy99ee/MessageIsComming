@@ -3,7 +3,7 @@ import RxCocoa
 
 enum MessageOption {
     case dynamicText(Driver<String>)
-    case dynamicTextDelay(Int?)
+    case dynamicTextDelay(Int)
     case inset(UIEdgeInsets)
     case offset(UIEdgeInsets)
     case animation(MessageAnimation)

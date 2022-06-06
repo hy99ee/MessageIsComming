@@ -11,7 +11,7 @@ protocol ClosableViewModelType {
 protocol MessageViewModelType: ClosableViewModelType {
     var onUpdateText: Driver<String>! { get }
     var dynamicText: Driver<String>? { get }
-    var dynamicTextDelay: Int? { get }
+    var dynamicTextDelay: Int { get }
     var inset: UIEdgeInsets { get }
     var offset: UIEdgeInsets { get }
     var animation: MessageAnimation { get }
@@ -26,7 +26,7 @@ protocol MessageViewModelType: ClosableViewModelType {
 
 class MessageViewModel: MessageViewModelType {
     private(set) var dynamicText: Driver<String>?
-    private(set) var dynamicTextDelay: Int?
+    private(set) var dynamicTextDelay: Int = 500
     private(set) var inset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
     private(set) var offset = UIEdgeInsets(top: 12, left: 16, bottom: 0, right: 40)
     private(set) var animation: MessageAnimation = .slide
@@ -36,9 +36,8 @@ class MessageViewModel: MessageViewModelType {
     private(set) var autoHideDelay: TimeInterval = 5
     private(set) var color: UIColor = .black.withAlphaComponent(0.5)
     private(set) var tintColor: UIColor = .white
-    private(set) var font: UIFont = .systemFont(ofSize: 15)
-    
-    private var text: BehaviorRelay<String>! = nil
+    private(set) var font: UIFont = .systemFont(ofSize: 18)
+
     var onUpdateText: Driver<String>! = nil
 
     let close: AnyObserver<Void>
@@ -65,7 +64,15 @@ class MessageViewModel: MessageViewModelType {
             }
         }
 
-        self.text = BehaviorRelay(value: data.text)
-        self.onUpdateText = self.dynamicText == nil ? self.text.asDriver() : dynamicText!
+        self.onUpdateText = dynamicTextDriver(data.text)
+    }
+
+    private func dynamicTextDriver(_ text: [String]) -> Driver<String> {
+        Observable.from(text)
+            .concatMap { Observable.empty()
+                    .delay(.milliseconds(self.dynamicTextDelay), scheduler: MainScheduler.instance)
+                .startWith($0)
+            }
+            .asDriver(onErrorJustReturn: "")
     }
 }
