@@ -62,9 +62,8 @@ extension MessageView {
         switch state {
         case .open where self.viewModel.autoHide:
             self.autoHideTimer?.invalidate()
-            self.autoHideTimer = Timer.scheduledTimer(withTimeInterval: self.viewModel.autoHideDelay, repeats: false) { [weak self] _ in
-                self?.hide()
-            }
+            let totalSeconds = self.viewModel.autoHideDelay.totalSeconds
+            self.autoHideTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(totalSeconds), repeats: false) { [weak self] _ in self?.hide() }
 
         case .closed:
             self.viewModel.close.onNext(())

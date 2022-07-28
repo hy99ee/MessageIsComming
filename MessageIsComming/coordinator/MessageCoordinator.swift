@@ -31,7 +31,12 @@ class MessageCoordinator: Coordinator<Void> {
             guard let self = self else { return }
             message.show(on: self.parentView)
         }
-
+//        let callback = {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//                guard let self = self else { return }
+//                message.show(on: self.parentView)
+//            }
+//        }
         if let otherMessage = parentView.subviews
                 .compactMap({ $0 as? MessageView })
                 .first {

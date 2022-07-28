@@ -23,6 +23,7 @@ class MessageView: UIView {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
+        view.text = " "
 
         return view
     }()
@@ -45,7 +46,7 @@ class MessageView: UIView {
 
         return view
     }()
-    private lazy var setHide: AnyObserver<Void> = AnyObserver { [weak self] _ in
+    private lazy var hide: AnyObserver<Void> = AnyObserver { [weak self] _ in
         guard let self = self else { return }
 
         self.autoHideTimer?.invalidate()
@@ -102,13 +103,13 @@ extension MessageView {
             .disposed(by: self.disposeBag)
 
         self.closeView.rx.tapView()
-            .emit(to: setHide)
+            .emit(to: hide)
             .disposed(by: self.disposeBag)
 
         self.rx.swipeGesture(.left)
             .when(.recognized)
             .map({ _ -> Void in })
-            .bind(to: setHide)
+            .bind(to: hide)
             .disposed(by: disposeBag)
     }
 }

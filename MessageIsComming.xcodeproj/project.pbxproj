@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B2FCD0C288FD46F00781325 /* MessageData+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2FCD0B288FD46F00781325 /* MessageData+DefaultTypes.swift */; };
+		3B2FCD0E288FF50600781325 /* DispatchTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2FCD0D288FF50600781325 /* DispatchTimeInterval.swift */; };
 		3B7652C8284A9A0400C608FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7652C7284A9A0400C608FC /* AppDelegate.swift */; };
 		3B7652CA284A9A0400C608FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7652C9284A9A0400C608FC /* SceneDelegate.swift */; };
 		3B7652CC284A9A0400C608FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7652CB284A9A0400C608FC /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		12BE5513980090B98994F68F /* Pods-MessageIsComming.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessageIsComming.release.xcconfig"; path = "Target Support Files/Pods-MessageIsComming/Pods-MessageIsComming.release.xcconfig"; sourceTree = "<group>"; };
+		3B2FCD0B288FD46F00781325 /* MessageData+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageData+DefaultTypes.swift"; sourceTree = "<group>"; };
+		3B2FCD0D288FF50600781325 /* DispatchTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimeInterval.swift; sourceTree = "<group>"; };
 		3B7652C4284A9A0400C608FC /* MessageIsComming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageIsComming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7652C7284A9A0400C608FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B7652C9284A9A0400C608FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				3B7652E7284A9A7000C608FC /* MessageOption.swift */,
 				3B7652E8284A9A7000C608FC /* MessageData.swift */,
 				3B7652E9284A9A7000C608FC /* MessageAnimation.swift */,
+				3B2FCD0B288FD46F00781325 /* MessageData+DefaultTypes.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 				3B7652E5284A9A7000C608FC /* UIView+Rx.swift */,
 				3B7652DE284A9A7000C608FC /* UIView.swift */,
 				3B7652ED284A9A7000C608FC /* String.swift */,
+				3B2FCD0D288FF50600781325 /* DispatchTimeInterval.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,9 +310,11 @@
 				3B7652CC284A9A0400C608FC /* ViewController.swift in Sources */,
 				3B7652F7284A9A7000C608FC /* MessageAnimation.swift in Sources */,
 				3B7652F4284A9A7000C608FC /* UIView+Rx.swift in Sources */,
+				3B2FCD0C288FD46F00781325 /* MessageData+DefaultTypes.swift in Sources */,
 				3B7652F8284A9A7000C608FC /* MessageView+Animations.swift in Sources */,
 				3B7652C8284A9A0400C608FC /* AppDelegate.swift in Sources */,
 				3B7652F2284A9A7000C608FC /* MessageCoordinator.swift in Sources */,
+				3B2FCD0E288FF50600781325 /* DispatchTimeInterval.swift in Sources */,
 				3B7652F9284A9A7000C608FC /* MessageView.swift in Sources */,
 				3B7652F6284A9A7000C608FC /* MessageData.swift in Sources */,
 				3B7652EE284A9A7000C608FC /* MessageViewModel.swift in Sources */,
